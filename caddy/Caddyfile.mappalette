@@ -1,0 +1,17 @@
+# MapPalette Routing Configuration
+# Reverse proxy map.{$DOMAIN} to MapPalette frontend container
+
+map.{$DOMAIN} {
+	import snippets/Logging
+
+	# Reverse proxy to MapPalette frontend
+	handle {
+		reverse_proxy frontend:80
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Add security headers
+	import snippets/SecurityHeaders
+}

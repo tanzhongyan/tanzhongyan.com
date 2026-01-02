@@ -205,3 +205,5 @@ volumes:
 
 networks:
   ghost_network:
+    driver: bridge
+    name: ghost_network
