@@ -1,0 +1,17 @@
+# Singheatlh Routing Configuration
+# Reverse proxy med.{$DOMAIN} to Singheatlh frontend container
+
+med.{$DOMAIN} {
+	import snippets/Logging
+
+	# Reverse proxy to Singheatlh frontend
+	handle {
+		reverse_proxy frontend:80
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Add security headers
+	import snippets/SecurityHeaders
+}
