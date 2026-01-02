@@ -1,0 +1,9 @@
+[submodule "apps/Singheatlh"]
+	path = apps/Singheatlh
+	url = https://github.com/tanzhongyan/Singheatlh
+[submodule "apps/Yorkshire-Crypto-Exchange"]
+	path = apps/Yorkshire-Crypto-Exchange
+	url = https://github.com/tanzhongyan/Yorkshire-Crypto-Exchange
+[submodule "apps/MapPalette"]
+	path = apps/MapPalette
+	url = https://github.com/tanzhongyan/MapPalette
