@@ -61,6 +61,8 @@ typings/
 
 # Environment setup script (contains sensitive info)
 setup-env.sh
+setup-env-dev.sh
+teardown-env-dev.sh
 
 # IDE
 .idea/*

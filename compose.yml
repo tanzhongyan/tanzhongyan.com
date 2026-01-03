@@ -1,12 +1,5 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/main/schema/compose-spec.json
-
-# Include submodule applications
-include:
-  - path: ./apps/MapPalette/docker-compose.yml
-  - path: ./apps/Singheatlh/docker-compose.yml
-  - path: ./apps/Yorkshire-Crypto-Exchange/docker-compose.yaml
-
 services:
   caddy:
     image: caddy:2.10.2-alpine@sha256:953131cfea8e12bfe1c631a36308e9660e4389f0c3dfb3be957044d3ac92d446

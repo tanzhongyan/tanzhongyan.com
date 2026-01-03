@@ -4,7 +4,65 @@
 map.{$DOMAIN} {
 	import snippets/Logging
 
-	# Reverse proxy to MapPalette frontend
+	# MapPalette Backend Service Routes
+	handle /api/users/* {
+		reverse_proxy user-service:5000
+	}
+
+	handle /api/posts/* {
+		reverse_proxy post-service:5000
+	}
+
+	handle /api/interactions/* {
+		reverse_proxy interaction-service:5000
+	}
+
+	handle /api/follow/* {
+		reverse_proxy follow-service:5000
+	}
+
+	handle /api/feed/* {
+		reverse_proxy feed-service:5000
+	}
+
+	handle /api/profile/* {
+		reverse_proxy profile-service:5000
+	}
+
+	handle /api/leaderboard/* {
+		reverse_proxy leaderboard-service:8080
+	}
+
+	handle /api/discover/* {
+		reverse_proxy user-discovery-service:3010
+	}
+
+	handle /api/social/* {
+		reverse_proxy social-interaction-service:5000
+	}
+
+	handle /api/routes {
+		reverse_proxy explore-routes-service:5000
+	}
+
+	handle /api/routes/* {
+		reverse_proxy explore-routes-service:5000
+	}
+
+	# Supabase Routes (via Kong)
+	handle /auth/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	handle /storage/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	handle /rest/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	# Frontend (default catch-all)
 	handle {
 		reverse_proxy frontend:80
 	}
