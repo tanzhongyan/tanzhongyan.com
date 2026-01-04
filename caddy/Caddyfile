@@ -22,15 +22,8 @@
 # MapPalette Application
 import Caddyfile.mappalette
 
-# Singheatlh Application# Singheatlh Application
-import Caddyfile.singheatlh
-
-# Yorkshire-Crypto-Exchange Application
+# Yorkshire Crypto Exchange
 import Caddyfile.yorkshire
-
-
-import Caddyfile.singhe# Singheatlh Application
-import Caddyfile.singheatlh
 
 # Separate admin domains
 # To use a separate domain for Ghost Admin uncomment the block below (recommended)
