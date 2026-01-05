@@ -1,0 +1,36 @@
+# Singheatlh Routing Configuration
+# Reverse proxy med.{$DOMAIN} to Singheatlh containers
+
+# Production HTTPS configuration (Caddy auto-provisions SSL certificates)
+med.{$DOMAIN} {
+	import snippets/Logging
+
+	# Route backend API requests to Spring Boot
+	handle /api/* {
+		reverse_proxy singheatlh-backend:8080
+	}
+
+	# Route Supabase auth and API requests to Kong Gateway
+	handle /auth/* {
+		reverse_proxy singheatlh-kong:8000
+	}
+
+	handle /rest/* {
+		reverse_proxy singheatlh-kong:8000
+	}
+
+	handle /storage/* {
+		reverse_proxy singheatlh-kong:8000
+	}
+
+	# Route all other requests to React frontend
+	handle {
+		reverse_proxy singheatlh-frontend:80
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Add security headers
+	import snippets/SecurityHeaders
+}

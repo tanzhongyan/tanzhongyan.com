@@ -1,0 +1,84 @@
+# MapPalette Routing Configuration
+# Reverse proxy map.{$DOMAIN} to MapPalette services
+
+map.{$DOMAIN} {
+	import snippets/Logging
+
+	# User Service routes
+	handle /api/users/* {
+		reverse_proxy user-service:5000
+	}
+
+	# Post Service routes
+	handle /api/posts/* {
+		reverse_proxy post-service:5000
+	}
+
+	# Interaction Service routes
+	handle /api/interactions/* {
+		reverse_proxy interaction-service:5000
+	}
+
+	# Follow Service routes
+	handle /api/follow/* {
+		reverse_proxy follow-service:5000
+	}
+
+	# Feed Service routes
+	handle /api/feed/* {
+		reverse_proxy feed-service:5000
+	}
+
+	# Profile Service routes
+	handle /api/profile/* {
+		reverse_proxy profile-service:5000
+	}
+
+	# Leaderboard Service routes
+	handle /api/leaderboard/* {
+		reverse_proxy leaderboard-service:8080
+	}
+
+	# User Discovery Service routes
+	handle /api/discover/* {
+		reverse_proxy user-discovery-service:3010
+	}
+
+	# Social Interaction Service routes
+	handle /api/social/* {
+		reverse_proxy social-interaction-service:5000
+	}
+
+	# Explore Routes Service routes
+	handle /api/routes/* {
+		reverse_proxy explore-routes-service:5000
+	}
+
+	handle /api/routes {
+		reverse_proxy explore-routes-service:5000
+	}
+
+	# Supabase Kong routes
+	handle /auth/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	handle /storage/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	handle /rest/* {
+		reverse_proxy supabase-kong:8000
+	}
+
+	# Frontend catch-all (must be last)
+	handle {
+		reverse_proxy mappalette-frontend:80
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Add security headers
+	import snippets/SecurityHeaders
+}

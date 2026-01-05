@@ -1,0 +1,23 @@
+# Yorkshire-Crypto-Exchange Routing Configuration
+# Reverse proxy crypto.{$DOMAIN} to Yorkshire containers
+
+# Production HTTPS configuration (Caddy auto-provisions SSL certificates)
+crypto.{$DOMAIN} {
+	import snippets/Logging
+
+	# Route API requests through Kong API Gateway
+	handle /api/* {
+		reverse_proxy yorkshire-kong:8000
+	}
+
+	# Route all other requests to Next.js website
+	handle {
+		reverse_proxy yorkshire-website:3000
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Add security headers
+	import snippets/SecurityHeaders
+}

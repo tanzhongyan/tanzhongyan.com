@@ -19,6 +19,12 @@
 	import snippets/SecurityHeaders
 }
 
+# MapPalette Application
+import Caddyfile.mappalette
+
+# Yorkshire Crypto Exchange
+import Caddyfile.yorkshire
+
 # Separate admin domains
 # To use a separate domain for Ghost Admin uncomment the block below (recommended)
 # {$ADMIN_DOMAIN} {
