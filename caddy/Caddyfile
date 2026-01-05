@@ -22,6 +22,9 @@
 # MapPalette Application
 import Caddyfile.mappalette
 
+# Singheatlh Medical System
+import Caddyfile.singheatlh
+
 # Yorkshire Crypto Exchange
 import Caddyfile.yorkshire
 
