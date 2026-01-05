@@ -1,12 +1,8 @@
 # Singheatlh Routing Configuration
 # Reverse proxy med.{$DOMAIN} to Singheatlh containers
 
-# Redirect HTTPS to HTTP for localhost development
-https://med.{$DOMAIN} {
-	redir http://med.{$DOMAIN}{uri} permanent
-}
-
-http://med.{$DOMAIN} {
+# Production HTTPS configuration (Caddy auto-provisions SSL certificates)
+med.{$DOMAIN} {
 	import snippets/Logging
 
 	# Route backend API requests to Spring Boot

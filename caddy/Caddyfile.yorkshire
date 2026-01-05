@@ -1,12 +1,8 @@
 # Yorkshire-Crypto-Exchange Routing Configuration
 # Reverse proxy crypto.{$DOMAIN} to Yorkshire containers
 
-# Redirect HTTPS to HTTP for localhost development
-https://crypto.{$DOMAIN} {
-	redir http://crypto.{$DOMAIN}{uri} permanent
-}
-
-http://crypto.{$DOMAIN} {
+# Production HTTPS configuration (Caddy auto-provisions SSL certificates)
+crypto.{$DOMAIN} {
 	import snippets/Logging
 
 	# Route API requests through Kong API Gateway
