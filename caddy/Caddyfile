@@ -30,7 +30,29 @@ import Caddyfile.yorkshire
 
 # Separate admin domains
 # To use a separate domain for Ghost Admin uncomment the block below (recommended)
-{$ADMIN_DOMAIN} {
+# {$ADMIN_DOMAIN} {
+# 	import snippets/Logging
+#
+# 	# Traffic Analytics service
+# 	import snippets/TrafficAnalytics
+#
+# 	# ActivityPub Service
+# 	import snippets/ActivityPub
+#
+# 	# Default proxy everything else to Ghost
+# 	handle {
+# 		reverse_proxy ghost:2368
+# 	}
+#
+# 	# Optional: Enable gzip compression
+# 	encode gzip
+#
+# 	# Optional: Add security headers
+# 	import snippets/SecurityHeaders
+# }
+
+# Ghost Admin Domain (Bypass Cloudflare Bot Protection)
+admin.{$DOMAIN} {
 	import snippets/Logging
 
 	# Traffic Analytics service
